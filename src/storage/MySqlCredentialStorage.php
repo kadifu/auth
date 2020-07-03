@@ -7,8 +7,6 @@
  */
 namespace Auth\Storage;
 
-use Auth\Storage\CredentialStorage;
-
 class MySqlCredentialStorage implements CredentialStorage
 {
     /**

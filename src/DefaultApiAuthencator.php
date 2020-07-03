@@ -7,10 +7,8 @@
  */
 namespace Auth;
 
-use Auth\ApiAuthencator;
+use Auth\Storage\CredentialStorage;
 use Auth\Storage\MySqlCredentialStorage;
-use Auth\ApiRequest;
-use Auth\AuthToken;
 
 class DefaultApiAuthencator implements ApiAuthencator
 {
@@ -33,10 +31,10 @@ class DefaultApiAuthencator implements ApiAuthencator
             $apiRequest = ApiRequest::createFromFullUrl($apiRequest);
         }
 
-        $appId = $apiRequest->getAppId();
-        $token = $apiRequest->getToken();
+        $appId     = $apiRequest->getAppId();
+        $token     = $apiRequest->getToken();
         $timestamp = $apiRequest->getTimestamp();
-        $baseUrl = $apiRequest->getBaseUrl();
+        $baseUrl   = $apiRequest->getBaseUrl();
 
         // 校验 token 是否过期
         $clientAuthToken = new AuthToken($token,$timestamp);
